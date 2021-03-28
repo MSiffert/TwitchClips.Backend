@@ -1,49 +1,80 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
-using TwitchClips.API.HttpClients;
-using TwitchClips.API.Models;
+using TwitchClips.API.Abstractions;
+using TwitchClips.API.Api;
+using TwitchClips.API.Extensions;
+using TwitchClips.API.Helper;
 
 namespace TwitchClips.API.Services
 {
-    public class TwitchService
+    public class TwitchApiService : ITwitchApiService
     {
-        private readonly DataHttpClient _httpClient;
-
-        public TwitchService(DataHttpClient httpClient)
+        private readonly HttpClient _httpClient;
+        
+        public TwitchApiService(HttpClient httpClient)
         {
             _httpClient = httpClient;
         }
 
-        public async Task<GameResponse> GetTopGamesAsync()
+        public async Task<GetGamesApiResponse> GetTopGames()
         {
-            var result = await _httpClient.GetAsync("helix/games/top");
-
-            return await result.Content.ReadAsAsync<GameResponse>();
+            var response = await _httpClient.GetAsync("https://api.twitch.tv/helix/games/top");
+            
+            return await response.Content.ReadAsAsync<GetGamesApiResponse>();
         }
-
-        public async Task<ClipResponse> GetClipsByGameAsync(string gameId)
+        
+        public async Task<GetClipsResponse> GetTopClipsFromGame(int gameId, int take)
         {
-            var url = $"helix/clips?game_id={gameId}";
-            var result = await _httpClient.GetAsync(url);
-
-            return await result.Content.ReadAsAsync<ClipResponse>();
+            var uri = new TwitchUriBuilder("https://api.twitch.tv/helix/clips")
+                .AppendQueryParameter("game_id", gameId)
+                .AppendQueryParameter("first", take)
+                .Build();
+            
+            var response = await _httpClient.GetAsync(uri);
+            
+            return await response.Content.ReadAsAsync<GetClipsResponse>();
         }
-
-        public async Task<ClipResponse> GetNextClipsByGameAsync(string gameId, string cursor, int take)
+        
+        public async Task<GetClipsResponse> GetClipsFromGame(int gameId, string cursor, bool isForwardCursor, int take)
         {
-            var url = $"helix/clips?game_id={gameId}&after={cursor}&first={take}";
-            var result = await _httpClient.GetAsync(url);
+            var uri = new TwitchUriBuilder("https://api.twitch.tv/helix/clips")
+                .AppendQueryParameter("game_id", gameId)
+                .AppendQueryParameter("first", take);
 
-            return await result.Content.ReadAsAsync<ClipResponse>();
+            if (!string.IsNullOrEmpty(cursor)) 
+                uri.AppendQueryParameter(isForwardCursor ? "after" : "before", cursor);
+
+            var response = await _httpClient.GetAsync(uri.Build());
+
+            return await response.Content.ReadAsAsync<GetClipsResponse>();
         }
-
-        public async Task<ClipResponse> GetPreviousClipsByGameAsync(string gameId, string cursor, int take)
+        
+        public async Task<GetClipsResponse> GetTopClipsFromBroadcaster(int broadcasterId, int take)
         {
-            var url = $"helix/clips?game_id={gameId}&before={cursor}&first={take}";
-            var result = await _httpClient.GetAsync(url);
-            var m = await result.Content.ReadAsStringAsync();
-            return await result.Content.ReadAsAsync<ClipResponse>();
+            var uri = new TwitchUriBuilder("https://api.twitch.tv/helix/clips")
+                .AppendQueryParameter("broadcaster_id", broadcasterId)
+                .AppendQueryParameter("first", take)
+                .Build();
+            
+            var response = await _httpClient.GetAsync(uri);
+            
+            return await response.Content.ReadAsAsync<GetClipsResponse>();
+        }
+        
+        public async Task<GetClipsResponse> GetClipsFromBroadcaster(int broadcasterId, string cursor, bool isForwardCursor, int take)
+        {
+            var uri = new TwitchUriBuilder("https://api.twitch.tv/helix/clips")
+                .AppendQueryParameter("broadcaster_id", broadcasterId)
+                .AppendQueryParameter("first", take);
+
+            if (!string.IsNullOrEmpty(cursor)) 
+                uri.AppendQueryParameter(isForwardCursor ? "before" : "after", cursor);
+
+            var response = await _httpClient.GetAsync(uri.Build());
+
+            return await response.Content.ReadAsAsync<GetClipsResponse>();
         }
     }
 }
