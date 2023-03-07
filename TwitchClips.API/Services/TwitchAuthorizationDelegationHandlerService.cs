@@ -24,12 +24,6 @@ namespace TwitchClips.API.Services
             _twitchApiService = twitchApiService;
         }
 
-        public async Task<GetGamesApiResponse> GetTopGames()
-        {
-            await PrepareClient();
-            return await _twitchApiService.GetTopGames();
-        }
-
         public async Task<GetClipsResponse> GetTopClipsFromGame(int gameId, int take)
         {
             await PrepareClient();

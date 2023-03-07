@@ -17,13 +17,6 @@ namespace TwitchClips.API.Services
         {
             _httpClient = httpClient;
         }
-
-        public async Task<GetGamesApiResponse> GetTopGames()
-        {
-            var response = await _httpClient.GetAsync("https://api.twitch.tv/helix/games/top");
-            
-            return await response.Content.ReadAsAsync<GetGamesApiResponse>();
-        }
         
         public async Task<GetClipsResponse> GetTopClipsFromGame(int gameId, int take)
         {

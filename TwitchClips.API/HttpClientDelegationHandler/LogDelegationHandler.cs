@@ -14,7 +14,7 @@ namespace TwitchClips.API.HttpClientDelegationHandler
 
             if (!response.IsSuccessStatusCode)
             {
-                var resultString = await response.Content.ReadAsStringAsync();
+                var resultString = await response.Content.ReadAsStringAsync(cancellationToken);
                 throw new Exception($"HTTP Request failed. Response: {resultString}");
             }
             

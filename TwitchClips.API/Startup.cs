@@ -58,6 +58,8 @@ namespace TwitchClips.API
                     );
                 });
             });
+            
+            services.AddSwaggerGen();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -65,6 +67,14 @@ namespace TwitchClips.API
         {
             app.UseDeveloperExceptionPage();
             app.UseHttpsRedirection();
+            
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+                c.RoutePrefix = "";
+            });
+            
             app.UseRouting();
             app.UseCors(CorsPolicyName);
             
