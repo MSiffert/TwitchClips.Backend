@@ -1,5 +1,4 @@
-﻿using System;
-using System.Net.Http;
+﻿using System.Net.Http;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -54,7 +53,7 @@ namespace TwitchClips.API
 
                     builder.WithOrigins
                     (
-                        "http://localhost:4200"
+                        "https://localhost:5000", "https://app-twitchclips-api.azurewebsites.net"
                     );
                 });
             });

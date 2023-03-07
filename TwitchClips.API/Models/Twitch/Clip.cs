@@ -1,7 +1,7 @@
 ﻿using System;
 using Newtonsoft.Json;
 
-namespace TwitchClips.API.Api
+namespace TwitchClips.API.Models.Twitch
 {
     public class Clip
     {

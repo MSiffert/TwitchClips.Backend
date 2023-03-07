@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using TwitchClips.API.Abstractions;
 using TwitchClips.API.Api;
 using TwitchClips.API.Extensions;
 using TwitchClips.API.Helper;
+using GetClipsResponse = TwitchClips.API.Models.Twitch.GetClipsResponse;
 
 namespace TwitchClips.API.Services
 {
@@ -18,56 +18,80 @@ namespace TwitchClips.API.Services
             _httpClient = httpClient;
         }
         
-        public async Task<GetClipsResponse> GetTopClipsFromGame(int gameId, int take)
+        public async Task<ClipsResponse> GetTopClipsFromGame(int gameId, int take)
         {
             var uri = new TwitchUriBuilder("https://api.twitch.tv/helix/clips")
-                .AppendQueryParameter("game_id", gameId)
                 .AppendQueryParameter("first", take)
+                .AppendQueryParameter("game_id", gameId)
                 .Build();
             
             var response = await _httpClient.GetAsync(uri);
-            
-            return await response.Content.ReadAsAsync<GetClipsResponse>();
+            var getClipsResponse = await response.Content.ReadAsAsync<GetClipsResponse>();
+
+            return new ClipsResponse
+            {
+                Data = getClipsResponse.Data.Select(e => new Clip
+                {
+                    Id = e.Id,
+                    Language = e.Language,
+                    Title = e.Title,
+                    Url = e.Url,
+                    BroadcasterId = e.BroadcasterId,
+                    BroadcasterName = e.BroadcasterName,
+                    CreatedAt = e.CreatedAt,
+                    CreatorId = e.CreatorId,
+                    CreatorName = e.CreatorName,
+                    EmbedUrl = e.EmbedUrl,
+                    GameId = e.GameId,
+                    ThumbnailUrl = e.ThumbnailUrl,
+                    VideoId = e.VideoId,
+                    ViewCount = e.ViewCount,
+                }).ToList(),
+                Pagination = new Pagination
+                {
+                    Cursor = getClipsResponse.Pagination.Cursor
+                }
+            };
         }
         
-        public async Task<GetClipsResponse> GetClipsFromGame(int gameId, string cursor, bool isForwardCursor, int take)
+        public async Task<ClipsResponse> GetClipsFromGame(int gameId, string cursor, int take)
         {
             var uri = new TwitchUriBuilder("https://api.twitch.tv/helix/clips")
-                .AppendQueryParameter("game_id", gameId)
+                .AppendQueryParameter("gameId", gameId)
                 .AppendQueryParameter("first", take);
 
-            if (!string.IsNullOrEmpty(cursor)) 
-                uri.AppendQueryParameter(isForwardCursor ? "after" : "before", cursor);
+            if (!string.IsNullOrEmpty(cursor))
+            {
+                uri.AppendQueryParameter("after", cursor);
+            }
 
             var response = await _httpClient.GetAsync(uri.Build());
+            var getClipsResponse = await response.Content.ReadAsAsync<GetClipsResponse>();
 
-            return await response.Content.ReadAsAsync<GetClipsResponse>();
-        }
-        
-        public async Task<GetClipsResponse> GetTopClipsFromBroadcaster(int broadcasterId, int take)
-        {
-            var uri = new TwitchUriBuilder("https://api.twitch.tv/helix/clips")
-                .AppendQueryParameter("broadcaster_id", broadcasterId)
-                .AppendQueryParameter("first", take)
-                .Build();
-            
-            var response = await _httpClient.GetAsync(uri);
-            
-            return await response.Content.ReadAsAsync<GetClipsResponse>();
-        }
-        
-        public async Task<GetClipsResponse> GetClipsFromBroadcaster(int broadcasterId, string cursor, bool isForwardCursor, int take)
-        {
-            var uri = new TwitchUriBuilder("https://api.twitch.tv/helix/clips")
-                .AppendQueryParameter("broadcaster_id", broadcasterId)
-                .AppendQueryParameter("first", take);
-
-            if (!string.IsNullOrEmpty(cursor)) 
-                uri.AppendQueryParameter(isForwardCursor ? "before" : "after", cursor);
-
-            var response = await _httpClient.GetAsync(uri.Build());
-
-            return await response.Content.ReadAsAsync<GetClipsResponse>();
+            return new ClipsResponse
+            {
+                Data = getClipsResponse.Data.Select(e => new Clip
+                {
+                    Id = e.Id,
+                    Language = e.Language,
+                    Title = e.Title,
+                    Url = e.Url,
+                    BroadcasterId = e.BroadcasterId,
+                    BroadcasterName = e.BroadcasterName,
+                    CreatedAt = e.CreatedAt,
+                    CreatorId = e.CreatorId,
+                    CreatorName = e.CreatorName,
+                    EmbedUrl = e.EmbedUrl,
+                    GameId = e.GameId,
+                    ThumbnailUrl = e.ThumbnailUrl,
+                    VideoId = e.VideoId,
+                    ViewCount = e.ViewCount,
+                }).ToList(),
+                Pagination = new Pagination
+                {
+                    Cursor = getClipsResponse.Pagination.Cursor
+                }
+            };
         }
     }
 }

@@ -8,6 +8,8 @@ using TwitchClips.API.Api;
 using TwitchClips.API.Extensions;
 using TwitchClips.API.Helper;
 using TwitchClips.API.Options;
+using GetClipsResponse = TwitchClips.API.Models.Twitch.GetClipsResponse;
+using TwitchAuthorizationToken = TwitchClips.API.Models.Twitch.TwitchAuthorizationToken;
 
 namespace TwitchClips.API.Services
 {
@@ -24,16 +26,16 @@ namespace TwitchClips.API.Services
             _twitchApiService = twitchApiService;
         }
 
-        public async Task<GetClipsResponse> GetTopClipsFromGame(int gameId, int take)
+        public async Task<ClipsResponse> GetTopClipsFromGame(int gameId, int take)
         {
             await PrepareClient();
             return await _twitchApiService.GetTopClipsFromGame(gameId, take);
         }
 
-        public async Task<GetClipsResponse> GetClipsFromGame(int gameId, string cursor, bool isForwardCursor, int take)
+        public async Task<ClipsResponse> GetClipsFromGame(int gameId, string cursor, int take)
         {
             await PrepareClient();
-            return await _twitchApiService.GetClipsFromGame(gameId, cursor, isForwardCursor, take);
+            return await _twitchApiService.GetClipsFromGame(gameId, cursor, take);
         }
 
         private async Task PrepareClient()
@@ -46,7 +48,6 @@ namespace TwitchClips.API.Services
 
         private async Task<TwitchAuthorizationToken> GetToken()
         {
-            // TODO: Do not hardcode
             var uri = new TwitchUriBuilder("https://id.twitch.tv/oauth2/token")
                 .AppendQueryParameter("client_id", _twitchAuthorizationOptions.Value.ClientId)
                 .AppendQueryParameter("client_secret", _twitchAuthorizationOptions.Value.ClientSecret)
@@ -55,9 +56,11 @@ namespace TwitchClips.API.Services
 
             var result = await _twitchHttpClient.PostAsync(uri, null);
             var token = await result.Content.ReadAsAsync<TwitchAuthorizationToken>();
-            
+
             if (string.IsNullOrEmpty(token.AccessToken))
+            {
                 throw new Exception("Token is null or empty.");
+            }
                 
             return token;
         }
