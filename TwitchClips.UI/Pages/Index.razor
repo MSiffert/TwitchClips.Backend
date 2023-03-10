@@ -1,29 +1,54 @@
 ﻿@page "/"
-@using TwitchClips.API.Api
+@using TwitchClips.Common.Models
 
-<PageTitle>Index</PageTitle>
+<InfiniteScroll OnScrollToEnd="@GetItems">
+    <MudContainer Class="main-container">
+        <div class="d-flex">
+            <div class="navigation">
 
-<MudText Typo="Typo.h3" GutterBottom="true">Hello, world!</MudText>
-<MudText Class="mb-8">Welcome to your new app, powered by MudBlazor!</MudText>
-<MudAlert Severity="Severity.Normal">You can find documentation and examples on our website here: <MudLink Href="https://mudblazor.com" Typo="Typo.body2" Color="Color.Inherit"><b>www.mudblazor.com</b></MudLink></MudAlert>
+            </div>
 
-@if (Clips.Any())
-{
-    @foreach (var clip in Clips)
-    {
-        <iframe
-            src="@(clip.EmbedUrl + "&parent=app-twitchclips.azurewebsites.net")"
-            frameborder="0"
-            muted="false"
-            allowfullscreen="true"
-        >
-        </iframe>
+            <div class="clips-container">
+                <Virtualize Items="Clips" ItemSize="680" Context="clip">
+                    <div class="clip">
+                        <iframe
+                            src="@(clip.EmbedUrl + "&parent=localhost:5000")"
+                            frameborder="0"
+                            muted="false"
+                            height="100%"
+                            width="100%"
+                            allowfullscreen="true">
+                        </iframe>
+                    </div>    
+                </Virtualize>
+            </div>
+        </div>
+    </MudContainer>
+</InfiniteScroll>
+
+<style>
+    .main-container {
+        min-height: 100%;
+        margin-top: 0;
+        margin-bottom: 0;
     }
-}
 
-<MudText>
-    @NumberOfClips
-</MudText>
+    .navigation {
+        width: 300px;
+        background-color: red;
+    }
+    
+    .clips-container {
+        padding-left: 3rem;
+        padding-right: 3rem;
+    }
+
+    .clip {
+        width: 640px;
+        height: 360px;
+        margin-bottom: 2rem;
+    }
+</style>
 
 @code {
 
@@ -31,7 +56,6 @@
     public HttpClient HttpClient { get; set; }
     
     public List<Clip> Clips { get; set; }
-    public int NumberOfClips => Clips.Count;
 
     public Index()
     {
@@ -40,9 +64,13 @@
     
     protected override async Task OnInitializedAsync()
     {
+        await GetItems();
+    }
+    
+    public async Task GetItems()
+    {
         var clips = await HttpClient.GetAsync("clips?gameId=21779");
         var response = await clips.Content.ReadFromJsonAsync<ClipsResponse>() ?? throw new Exception();
-        Console.WriteLine(response.Data.First().EmbedUrl);
-        Clips = response.Data;
+        Clips.AddRange(response.Data);
     }
 }

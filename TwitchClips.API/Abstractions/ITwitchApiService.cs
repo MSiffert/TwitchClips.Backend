@@ -1,5 +1,5 @@
 ﻿using System.Threading.Tasks;
-using TwitchClips.API.Api;
+using TwitchClips.Common.Models;
 using GetClipsResponse = TwitchClips.API.Models.Twitch.GetClipsResponse;
 
 namespace TwitchClips.API.Abstractions

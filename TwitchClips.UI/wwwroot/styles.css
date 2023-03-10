@@ -1,0 +1,7 @@
+.d-flex {
+    display: flex;
+}
+
+html, body, #app, .layout, .main-content {
+    height: 100%
+}

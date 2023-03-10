@@ -4,10 +4,10 @@ using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Options;
 using TwitchClips.API.Abstractions;
-using TwitchClips.API.Api;
 using TwitchClips.API.Extensions;
 using TwitchClips.API.Helper;
 using TwitchClips.API.Options;
+using TwitchClips.Common.Models;
 using GetClipsResponse = TwitchClips.API.Models.Twitch.GetClipsResponse;
 using TwitchAuthorizationToken = TwitchClips.API.Models.Twitch.TwitchAuthorizationToken;
 

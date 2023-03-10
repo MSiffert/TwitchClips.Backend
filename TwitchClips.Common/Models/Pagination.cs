@@ -1,4 +1,4 @@
-﻿namespace TwitchClips.API.Api
+﻿namespace TwitchClips.Common.Models
 {
     public class Pagination
     {

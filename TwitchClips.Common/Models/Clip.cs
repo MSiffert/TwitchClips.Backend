@@ -1,7 +1,4 @@
-﻿using System;
-using Newtonsoft.Json;
-
-namespace TwitchClips.API.Api
+﻿namespace TwitchClips.Common.Models
 {
     public class Clip
     {

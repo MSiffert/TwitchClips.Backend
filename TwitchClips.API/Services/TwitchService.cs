@@ -2,9 +2,9 @@
 using System.Net.Http;
 using System.Threading.Tasks;
 using TwitchClips.API.Abstractions;
-using TwitchClips.API.Api;
 using TwitchClips.API.Extensions;
 using TwitchClips.API.Helper;
+using TwitchClips.Common.Models;
 using GetClipsResponse = TwitchClips.API.Models.Twitch.GetClipsResponse;
 
 namespace TwitchClips.API.Services

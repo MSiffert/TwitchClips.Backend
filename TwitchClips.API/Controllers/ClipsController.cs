@@ -1,7 +1,6 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using TwitchClips.API.Abstractions;
-using TwitchClips.API.Api;
 using GetClipsResponse = TwitchClips.API.Models.Twitch.GetClipsResponse;
 
 namespace TwitchClips.API.Controllers

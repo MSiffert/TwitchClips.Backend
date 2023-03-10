@@ -1,7 +1,8 @@
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
-using TwitchClips.UI;
 using MudBlazor.Services;
+
+namespace TwitchClips.UI;
 
 public class Program
 {
@@ -13,7 +14,7 @@ public class Program
 
         builder.Services.AddScoped(sp => new HttpClient
         {
-            BaseAddress = new Uri("https://localhost:6500/api") 
+            BaseAddress = new Uri("https://app-twitchclips-api.azurewebsites.net") 
         });
 
         builder.Services.AddMudServices();

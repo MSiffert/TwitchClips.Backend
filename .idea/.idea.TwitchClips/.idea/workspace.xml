@@ -24,22 +24,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="004fbcc3-e740-4679-9208-67ffbbe194c4" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/TwitchClips.Common/Models/ClipsResponse.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TwitchClips.UI/Shared/InfiniteScroll.razor" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TwitchClips.UI/wwwroot/js/infiniteScroll.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TwitchClips.UI/wwwroot/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.TwitchClips/.idea/.name" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TwitchClips/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TwitchClips/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TwitchClips.API/Abstractions/ITwitchApiService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TwitchClips.API/Abstractions/ITwitchApiService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TwitchClips.API/Api/Clip.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TwitchClips.Common/Models/Clip.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TwitchClips.API/Api/GetClipsResponse.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TwitchClips.API/Models/Twitch/GetClipsResponse.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TwitchClips.API/Api/Pagination.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TwitchClips.Common/Models/Pagination.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TwitchClips.API/Api/TwitchTokenResponse.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TwitchClips.API/Models/Twitch/TwitchTokenResponse.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TwitchClips.API/Controllers/ClipsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TwitchClips.API/Controllers/ClipsController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TwitchClips.API/HttpClientDelegationHandler/LogDelegationHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TwitchClips.API/HttpClientDelegationHandler/LogDelegationHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TwitchClips.API/Models/Twitch/GetClipsResponse.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TwitchClips.API/Models/Twitch/GetClipsResponse.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TwitchClips.API/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TwitchClips.API/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TwitchClips.API/Properties/launchSettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/TwitchClips.API/Properties/launchSettings.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TwitchClips.API/Services/TwitchAuthorizationDelegationHandlerService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TwitchClips.API/Services/TwitchAuthorizationDelegationHandlerService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TwitchClips.API/Services/TwitchService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TwitchClips.API/Services/TwitchService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TwitchClips.API/Startup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TwitchClips.API/Startup.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TwitchClips.API/TwitchClips.API.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/TwitchClips.API/TwitchClips.API.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TwitchClips.sln" beforeDir="false" afterPath="$PROJECT_DIR$/TwitchClips.sln" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TwitchClips.API/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/TwitchClips.API/appsettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TwitchClips.Common/Models/Clip.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TwitchClips.Common/Models/Clip.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TwitchClips.Common/Models/ClipsResponse.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TwitchClips.Common/Models/ClipsResponse.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TwitchClips.Common/Models/Pagination.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TwitchClips.Common/Models/Pagination.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TwitchClips.Common/TwitchClips.Common.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/TwitchClips.Common/TwitchClips.Common.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TwitchClips.UI/Pages/Index.razor" beforeDir="false" afterPath="$PROJECT_DIR$/TwitchClips.UI/Pages/Index.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TwitchClips.UI/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TwitchClips.UI/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TwitchClips.UI/Shared/MainLayout.razor" beforeDir="false" afterPath="$PROJECT_DIR$/TwitchClips.UI/Shared/MainLayout.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TwitchClips.UI/TwitchClips.UI.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/TwitchClips.UI/TwitchClips.UI.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TwitchClips.UI/_Imports.razor" beforeDir="false" afterPath="$PROJECT_DIR$/TwitchClips.UI/_Imports.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TwitchClips.UI/wwwroot/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/TwitchClips.UI/wwwroot/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,6 +56,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/401be1c89d814c05bdd5dbd42f81dfd2f688/db/31b0d058/DotNetObjectReference.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -80,27 +91,61 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "WebServerToolWindowFactoryState": "false",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
-  <component name="RunManager" selected="Azure - Publish Web App.Publish TwitchClips.UI to Azure">
+}</component>
+  <component name="RunManager" selected="Compound.Run">
+    <configuration name="Publish TwitchClips.API to Azure" type="AzureDotNetWebAppPublish" factoryName="Azure Web App">
+      <option name="AZURE_WEB_APP_PROJECT" value="$PROJECT_DIR$/TwitchClips.API/TwitchClips.API.csproj" />
+      <option name="AZURE_WEB_APP_SUBSCRIPTION_ID" value="a0a27f8d-9130-4f9e-9911-1018fc93cc3f" />
+      <option name="AZURE_WEB_APP_IS_CREATE_APP" value="0" />
+      <option name="AZURE_WEB_APP_ID" value="/subscriptions/a0a27f8d-9130-4f9e-9911-1018fc93cc3f/resourceGroups/twitchclips/providers/Microsoft.Web/sites/app-twitchclips-api" />
+      <option name="AZURE_WEB_APP_NAME" value="" />
+      <option name="AZURE_WEB_APP_IS_CREATE_RESOURCE_GROUP" value="0" />
+      <option name="AZURE_WEB_APP_RESOURCE_GROUP_NAME" value="" />
+      <option name="AZURE_WEB_APP_OPERATING_SYSTEM" value="WINDOWS" />
+      <option name="AZURE_WEB_APP_IS_CREATE_APP_SERVICE_PLAN" value="0" />
+      <option name="AZURE_WEB_APP_SERVICE_PLAN_ID" value="" />
+      <option name="AZURE_WEB_APP_SERVICE_PLAN_NAME" value="" />
+      <option name="AZURE_WEB_APP_LOCATION" value="eastus" />
+      <option name="AZURE_WEB_APP_PRICING_TIER" value="" />
+      <option name="AZURE_WEB_APP_NET_FRAMEWORK" value="4.7" />
+      <option name="AZURE_WEB_APP_NET_CORE_RUNTIME" value="DOTNETCORE 2.1" />
+      <option name="AZURE_WEB_APP_IS_DEPLOY_TO_SLOT" value="0" />
+      <option name="AZURE_WEB_APP_SLOT_NAME" value="" />
+      <option name="AZURE_SQL_DATABASE_SUBSCRIPTION_ID" value="a0a27f8d-9130-4f9e-9911-1018fc93cc3f" />
+      <option name="AZURE_SQL_DATABASE_IS_ENABLED" value="0" />
+      <option name="AZURE_SQL_DATABASE_CONNECTION_STRING_NAME" value="" />
+      <option name="AZURE_SQL_DATABASE_IS_CREATE" value="0" />
+      <option name="AZURE_SQL_DATABASE_ID" value="" />
+      <option name="AZURE_SQL_DATABASE_NAME" value="" />
+      <option name="AZURE_SQL_DATABASE_IS_CREATE_RESOURCE_GROUP" value="0" />
+      <option name="AZURE_SQL_DATABASE_RESOURCE_GROUP_NAME" value="" />
+      <option name="AZURE_SQL_DATABASE_IS_CREATE_SQL_SERVER" value="0" />
+      <option name="AZURE_SQL_DATABASE_SQL_SERVER_ID" value="" />
+      <option name="AZURE_SQL_DATABASE_SQL_SERVER_NAME" value="" />
+      <option name="AZURE_SQL_DATABASE_SQL_SERVER_ADMIN_LOGIN" value="N/A" />
+      <option name="AZURE_SQL_DATABASE_LOCATION" value="eastus" />
+      <option name="AZURE_SQL_DATABASE_COLLATION" value="SQL_Latin1_General_CP1_CI_AS" />
+      <method v="2" />
+    </configuration>
     <configuration name="Publish TwitchClips.UI to Azure" type="AzureDotNetWebAppPublish" factoryName="Azure Web App">
       <option name="AZURE_WEB_APP_PROJECT" value="$PROJECT_DIR$/TwitchClips.UI/TwitchClips.UI.csproj" />
       <option name="AZURE_WEB_APP_SUBSCRIPTION_ID" value="a0a27f8d-9130-4f9e-9911-1018fc93cc3f" />
       <option name="AZURE_WEB_APP_IS_CREATE_APP" value="0" />
-      <option name="AZURE_WEB_APP_ID" value="/subscriptions/a0a27f8d-9130-4f9e-9911-1018fc93cc3f/resourceGroups/twitchclips/providers/Microsoft.Web/sites/app-twitchclips" />
-      <option name="AZURE_WEB_APP_NAME" value="webapp-230307181509" />
-      <option name="AZURE_WEB_APP_IS_CREATE_RESOURCE_GROUP" value="1" />
-      <option name="AZURE_WEB_APP_RESOURCE_GROUP_NAME" value="rg-230307181509" />
+      <option name="AZURE_WEB_APP_ID" value="/subscriptions/a0a27f8d-9130-4f9e-9911-1018fc93cc3f/resourceGroups/twitchclips/providers/Microsoft.Web/sites/app-twitchclips-ui" />
+      <option name="AZURE_WEB_APP_NAME" value="" />
+      <option name="AZURE_WEB_APP_IS_CREATE_RESOURCE_GROUP" value="0" />
+      <option name="AZURE_WEB_APP_RESOURCE_GROUP_NAME" value="" />
       <option name="AZURE_WEB_APP_OPERATING_SYSTEM" value="WINDOWS" />
-      <option name="AZURE_WEB_APP_IS_CREATE_APP_SERVICE_PLAN" value="1" />
+      <option name="AZURE_WEB_APP_IS_CREATE_APP_SERVICE_PLAN" value="0" />
       <option name="AZURE_WEB_APP_SERVICE_PLAN_ID" value="" />
-      <option name="AZURE_WEB_APP_SERVICE_PLAN_NAME" value="appsp-230307181509" />
+      <option name="AZURE_WEB_APP_SERVICE_PLAN_NAME" value="" />
       <option name="AZURE_WEB_APP_LOCATION" value="eastus" />
-      <option name="AZURE_WEB_APP_PRICING_TIER" value="S1" />
+      <option name="AZURE_WEB_APP_PRICING_TIER" value="" />
       <option name="AZURE_WEB_APP_NET_FRAMEWORK" value="4.7" />
       <option name="AZURE_WEB_APP_NET_CORE_RUNTIME" value="DOTNETCORE 2.1" />
       <option name="AZURE_WEB_APP_IS_DEPLOY_TO_SLOT" value="0" />
@@ -175,6 +220,7 @@
       <item itemvalue=".NET Launch Settings Profile.API" />
       <item itemvalue=".NET Launch Settings Profile.UI" />
       <item itemvalue="Azure - Publish Web App.Publish TwitchClips.UI to Azure" />
+      <item itemvalue="Azure - Publish Web App.Publish TwitchClips.API to Azure" />
       <item itemvalue="Compound.Run" />
     </list>
   </component>
@@ -192,7 +238,9 @@
       <workItem from="1616662482487" duration="3252000" />
       <workItem from="1616839851417" duration="7739000" />
       <workItem from="1616949563856" duration="598000" />
-      <workItem from="1678205124924" duration="4164000" />
+      <workItem from="1678205124924" duration="5500000" />
+      <workItem from="1678210693143" duration="8411000" />
+      <workItem from="1678469042600" duration="2022000" />
     </task>
     <servers />
   </component>
@@ -215,25 +263,5 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/TwitchClips.UI/Pages/Index.razor</url>
-          <line>46</line>
-          <properties documentPath="C:\Repos\TwitchClips\twitchclips.api\TwitchClips.UI\Pages\Index.razor" initialLine="47" isMultiMethodBreakpoint="true">
-            <option name="multiMethodBreakpoint" value="true" />
-            <startOffsets>
-              <option value="-1" />
-            </startOffsets>
-            <endOffsets>
-              <option value="-1" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="23" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

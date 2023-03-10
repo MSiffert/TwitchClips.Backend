@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using Newtonsoft.Json;
-using TwitchClips.API.Api;
 
 namespace TwitchClips.API.Models.Twitch
 {

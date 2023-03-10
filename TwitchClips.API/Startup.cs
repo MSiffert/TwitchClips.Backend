@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
+using Serilog;
 using TwitchClips.API.Abstractions;
 using TwitchClips.API.HttpClientDelegationHandler;
 using TwitchClips.API.Options;
@@ -53,7 +54,7 @@ namespace TwitchClips.API
 
                     builder.WithOrigins
                     (
-                        "https://localhost:5000", "https://app-twitchclips-api.azurewebsites.net"
+                        "https://localhost:5000", "https://app-twitchclips-ui.azurewebsites.net"
                     );
                 });
             });
@@ -65,6 +66,8 @@ namespace TwitchClips.API
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             app.UseDeveloperExceptionPage();
+            app.UseSerilogRequestLogging();
+
             app.UseHttpsRedirection();
             
             app.UseSwagger();

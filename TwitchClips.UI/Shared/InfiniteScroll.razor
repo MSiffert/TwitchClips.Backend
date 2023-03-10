@@ -1,0 +1,44 @@
+﻿<div @ref="_scrollContainer" class="scroll-container">
+    <div @ref="_scrollContent">
+        @ChildContent
+    </div>
+</div>
+
+<style>
+    .scroll-container {
+        height: 100%;
+        padding-top: 40px;
+        overflow-y: scroll;
+    }
+</style>
+
+@code {
+    [Parameter] public RenderFragment ChildContent { get; set; }
+    [Parameter] public EventCallback OnScrollToEnd { get; set; }
+    [Inject] public IJSRuntime JsRuntime { get; set; }
+    
+    private DotNetObjectReference<InfiniteScroll> _objectRef;
+    private ElementReference _scrollContainer;
+    private ElementReference _scrollContent;
+    private bool _isLoading;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            _objectRef = DotNetObjectReference.Create(this);
+            await JsRuntime.InvokeVoidAsync("registerInfiniteScroll", _scrollContainer, _scrollContent, _objectRef);
+        }
+    }
+
+    [JSInvokable]
+    public async Task OnEndReached()
+    {
+        if (!_isLoading)
+        {
+            _isLoading = true;
+            await OnScrollToEnd.InvokeAsync();
+            _isLoading = false;
+        }
+    }
+}
